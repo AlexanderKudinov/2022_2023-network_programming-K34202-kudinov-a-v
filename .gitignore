@@ -1,0 +1,10 @@
+bin-debug/
+bin-release/
+
+.settings/
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk

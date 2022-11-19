@@ -33,6 +33,7 @@ Date of finished:
 Затем был установлен WinBox и подключен к клиенту. В файловую систему были добавлены сертификаты OpenVPN, полученные с сервера (Рисунок 5), затем данные сертификаты были импортированы (Рисунок 6).
 ![image](https://user-images.githubusercontent.com/42407837/202854476-3c4acd3e-20bb-4c34-b71b-ec7c1473f073.png)
 Рисунок 5 - Добавление сертификатов OpenVPN
+
 ![image](https://user-images.githubusercontent.com/42407837/202856301-c7147b2f-8bac-4ac9-9b9e-27c5f775dac6.png)
 Рисунок 6 - Импорт сертификатов OpenVPN
 
@@ -40,6 +41,7 @@ Date of finished:
 
 ![image](https://user-images.githubusercontent.com/42407837/202856471-7765369e-fea4-4a99-904d-f4347a948ebb.png)
 Рисунок 7 - Настройка VPN туннеля
+
 ![image](https://user-images.githubusercontent.com/42407837/202860977-365ef1bc-8179-446f-9acd-eba5f562826c.png)
 Рисунок 8 - Настройка VPN туннеля
 

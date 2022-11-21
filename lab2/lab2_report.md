@@ -29,7 +29,6 @@ Date of finished:
 
 Рисунок 2 - Создание файла ansible_test.yml
 
-![image](https://user-images.githubusercontent.com/42407837/202979378-82369bd7-ecc6-40f4-a64a-c39310cbbe5e.png)
 
 Рисунок 3 - Тестирование ansible
 

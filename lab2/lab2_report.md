@@ -17,5 +17,18 @@ Date of finished:
 Также удалось успешно подключить соединение между вторым клиентом и удаленной виртуальной машины с помощью OpenVPN.
 
 Далее была проделана работа с Ansible. 
-Вначале был создан файл hosts с конфигурацией созданных ранее виртуальных машин с RouterOS, содержащую IP, логин и пароль (Рисунок 1).
+Вначале был создан файл hosts в директории /etc/ansible с конфигурацией созданных ранее виртуальных машин с RouterOS, содержащую IP, логин и пароль (Рисунок 1).
 
+![image](https://user-images.githubusercontent.com/42407837/202906882-114bae1e-cf26-48b9-961c-ecfcba4dab44.png)
+
+Рисунок 1 - Создание файла hosts
+
+Затем в директории /etc/ansible был создан файл ansible_test.yml для тестирования ansible (Рисунок 2) и файл changePass.yml для настройки логина и пароля на двух виртуальных машинах с RouterOS (Рисунок 3).
+
+![image](https://user-images.githubusercontent.com/42407837/202907934-68022514-6340-4e49-bb87-91de72c487b1.png)
+
+Рисунок 2 - Создание файла ansible_test.yml
+
+![image](https://user-images.githubusercontent.com/42407837/202910731-a56e5311-b380-4aed-abe8-f5297a29f813.png)
+
+Рисунок 3 - Создание файла changePass.yml

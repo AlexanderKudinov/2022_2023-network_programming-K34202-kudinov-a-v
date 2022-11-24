@@ -29,11 +29,32 @@ Date of finished:
 
 Рисунок 2 - Создание файла ansible_test.yml
 
+![image](https://user-images.githubusercontent.com/42407837/203728961-4211a439-0f29-4c7b-bcb7-717ad7972243.png)
 
 Рисунок 3 - Тестирование ansible
 
-Затем был создан файл changePass.yml (Рисунок 4), и настроен логин и пароль на двух виртуальных машинах с RouterOS (Рисунок 5).
+Затем был создан файл changePass.yml (Рисунок 4), и настроен логин и пароль на двух виртуальных машинах с RouterOS.
 
 ![image](https://user-images.githubusercontent.com/42407837/202910731-a56e5311-b380-4aed-abe8-f5297a29f813.png)
 
 Рисунок 4 - Создание файла changePass.yml
+
+Далее с помощью Ansible были настроены NTP-клиенты (Рисунок 5), а также OSPF роутинг (Рисунок 6) сразу на двух виртуальных машинах с RouterOS. Результат работы представлен на рисунке 7.
+
+![image](https://user-images.githubusercontent.com/42407837/203729422-baf03aba-521a-4f5e-aa8e-9ca05be3af52.png)
+
+Рисунок 5 - Настройка NTP-клиентов
+
+![image](https://user-images.githubusercontent.com/42407837/203729734-beb1ae7e-5480-48e6-bcf8-316a2ffb0789.png)
+
+Рисунок 6 - Настройка OSPF роутинга
+
+![image](https://user-images.githubusercontent.com/42407837/203730025-d6415d72-20a4-4b01-8bd4-f24b0fefaeff.png)
+
+Рисунок 7 - Результат работы
+
+Затем с помощью Ansible были собраны данные по OSPF топологии и полный конфиг устройства сразу на двух виртуальных машинах с RouterOS, после чего результаты были сохранены в файлах r1.json и r2.json. Содержание файла collectInfo.yml представлено на рисунке 8. 
+
+![image](https://user-images.githubusercontent.com/42407837/203730465-20c8b54a-8d0e-4ba1-b21d-86aa0bb7d853.png)
+
+Рисунок 8 - сбор данных по OSPF топологии

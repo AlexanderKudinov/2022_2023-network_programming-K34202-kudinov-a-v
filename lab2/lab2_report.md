@@ -58,3 +58,18 @@ Date of finished:
 ![image](https://user-images.githubusercontent.com/42407837/203730465-20c8b54a-8d0e-4ba1-b21d-86aa0bb7d853.png)
 
 Рисунок 8 - сбор данных по OSPF топологии
+
+Наконец, была проведена проверка подключения клиента с сервером с помощью команды "ping" (Рисунки 9 и 10)
+
+![image](https://user-images.githubusercontent.com/42407837/203732758-c8556c98-3031-484a-b8dc-877ef5b9250b.png)
+
+Рисунок 9 - Проверка подключения
+
+![image](https://user-images.githubusercontent.com/42407837/203732867-42a488a5-8995-4efd-b0e5-e04d229894a9.png)
+
+Рисунок 10 - Проверка подключения
+
+
+![image](https://user-images.githubusercontent.com/42407837/203733211-8b162b36-f22a-46ae-8b8c-8a7f729b948f.png)
+
+Рисунок 11 - Схема подключения

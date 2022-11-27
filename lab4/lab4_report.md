@@ -59,7 +59,7 @@ Date of create: 27.11.2022
 
 Рисунок 9 - Тестирование команды ping
 
-Наконец, работа сети была проверена через программы receive.py и send.py. Также была проверена работоспособность туннелирования с помощью параметр dst_id (Рисунки 10-16).
+Наконец, работа сети была проверена через программы receive.py и send.py. Также была проверена работоспособность туннелирования с помощью параметр dst_id (Рисунки 10-15).
 
 ![image](https://user-images.githubusercontent.com/42407837/204137548-6c7f1cc4-3cff-450f-98a9-712bddf8089a.png)
 
@@ -71,16 +71,29 @@ Date of create: 27.11.2022
 
 ![image](https://user-images.githubusercontent.com/42407837/204137633-bdd321aa-1d34-460b-9715-623df003e5e6.png)
 
-Рисунок 10 - Тестирование receive.py (2)
+Рисунок 12 - Тестирование receive.py (2)
 
 ![image](https://user-images.githubusercontent.com/42407837/204137645-c2926f5c-ed97-4f37-b7b0-0da0dd6ef95c.png)
 
-Рисунок 11 - Тестирование send.py (2)
+Рисунок 13 - Тестирование send.py (2)
 
 ![image](https://user-images.githubusercontent.com/42407837/204137663-822ac5b8-9667-4358-8393-40b55006bdb2.png)
 
-Рисунок 10 - Тестирование receive.py (3)
+Рисунок 14 - Тестирование receive.py (3)
 
 ![image](https://user-images.githubusercontent.com/42407837/204137677-8ebedd2a-5675-481d-ba65-af07f3f71efc.png)
 
-Рисунок 11 - Тестирование send.py (3)
+Рисунок 15 - Тестирование send.py (3)
+
+Ниже представлены схемы сетей, использованных в задании
+
+![image](https://user-images.githubusercontent.com/42407837/204137721-60ed7002-5e34-4a07-94f0-0af2202bad69.png)
+
+Рисунок 16 - Схема Basic Forwarding
+
+![image](https://user-images.githubusercontent.com/42407837/204137754-75d0cc4f-3bbe-43b4-8015-32e63848a660.png)
+
+Рисунок 17 - Схема Basic Tunneling
+
+Вывод:
+В ходе выполнения лабороторной работы было изучено стандартное перенаправление пакетов, а также туннелирование. Также данные механизмы были реализованы с помозью языка P4.

@@ -11,93 +11,133 @@ Date of create: 27.11.2022
 
 Ход работы:
 
-Вначале была установлена виртуальная машина с необходимыми средствами для выполнения задания.
+Вначале была установлена виртуальная машина с необходимыми средствами для выполнения заданий.
 
-Затем был скомпилирован стартовый файл basic.p4 с помощью команды make run, после чего повяилась командная строка Mininet (Рисунок 1).
+1. Задание Basic Forwarding
+
+Был скомпилирован стартовый файл basic.p4 с помощью команды make run, после чего повяилась командная строка Mininet (Рисунок 1).
 
 ![image](https://user-images.githubusercontent.com/42407837/209434901-38c74a53-2a81-4955-8953-a204aafa4b7c.png)
 
 Рисунок 1 - Командная строка
 
-Далее была произведена проверка соединения с помощью команды ping, пнг между хостами в схеме не работает, потому что все пакеты отбрасываются автоматически.
+Далее была произведена проверка соединения с помощью команды ping, пинг между хостами в схеме не работает, потому что все пакеты автоматически отбрасываются.
 
 ![image](https://user-images.githubusercontent.com/42407837/209434914-415322b2-9270-41ed-8613-4fe9b7edf4e9.png)
 
 Рисунок 2 - Тестирование команды ping
 
-Были ены парсеры для ipv4 и ethernet загловков
+Были добавлены парсеры для ipv4 и ethernet загловков (Рисунок 3).
 
-Далее был отредактирован файл basic.p4 для корректной работы сети (Рисунки 3-5).
+![image](https://user-images.githubusercontent.com/42407837/209434996-613647ae-e392-46d9-bccb-86e96bba0c92.png)
 
-![image](https://user-images.githubusercontent.com/42407837/204136915-03e6fc88-d004-4cde-b4c0-72e7c55a301a.png)
+Рисунок 3 - Добавление парсеров
 
-Рисунок 3 - Добавление парсинга Ethernet
+Была добавлена логика для пересылки ipv4 пакетов (Рисунок 4). При пересылке ipv4 пакетов необходимо установить выходный порт, обновить MAC адрес назначения, обновить исходный MAC адрес, а также уменьшить значение TTL на 1.
 
-![image](https://user-images.githubusercontent.com/42407837/204136943-bd2ef81c-9d67-406b-b7de-c241d8a70687.png)
+![image](https://user-images.githubusercontent.com/42407837/209435035-5305f5c7-cca0-48a9-8b1a-9c6466ba7839.png)
 
-Рисунок 4 - Добавление логики пеерсылки ipv4 пакетов
+Рисунок 4 - Логика для пересылки ipv4 пакетов
 
-![image](https://user-images.githubusercontent.com/42407837/204136967-b3a1bc28-4901-4a2b-9576-e65a293214de.png)
+Длаее была определена таблица, отвечающая за маршрутизацию (Рисунок 5).
 
-Рисунок 5 - Добавление валидации пакетов
+![image](https://user-images.githubusercontent.com/42407837/209435051-c6623b50-ab7e-48a4-ab00-df52675a1ecf.png)
 
-Затем с помощью с помошью Makefile и исправленного basic.p4 сеть была заново сконфигурирована. Команда ping была протестирована заново - в этот раз все 100% пакетов были доставлены (Рисунок 6).
+Рисунок 5 - Таблица маршрутизации
 
-![image](https://user-images.githubusercontent.com/42407837/204137003-7c45db04-c940-402f-92e0-fb7b4fe643a9.png)
+Также было добавлено условие для проверки корректности ipv4 заголовка (Рисунок 6).
 
-Рисунок 6 - Тестирование команды ping
+![image](https://user-images.githubusercontent.com/42407837/209435061-bf388567-03b5-44d0-b7f8-2a829c439964.png)
 
-Был отредактирован файл basic_tunnel.p4 для корректной работы сети "Basic Tunneling" (Рисунки 7-8).
+Рисунок 6 - Проверка ipv4 заголовка
 
-![image](https://user-images.githubusercontent.com/42407837/204137176-221a91fe-34ee-4662-8334-c7dc42c9bb76.png)
+Затем была произведено добавление заголовка (Рисунок 7)
 
-Рисунок 7 - Добавление парсинга myTunnel хэдеров
+![image](https://user-images.githubusercontent.com/42407837/209435106-9c846b87-2702-4d3b-8e1a-b5cbc8db18a7.png)
 
-![image](https://user-images.githubusercontent.com/42407837/204137218-f98b1760-5e51-4343-8037-7712906c6804.png)
+Рисунок 7 - Добавление заголовка
 
-Рисунок 8 - Добавление логики пересылки myTunnel пакетов
+С помощью команды ping подключение было снова проверено - на этот раз успешно (Рисунок 8).
 
-Затем с помощью с помошью Makefile и исправленного basic_tunnel.p4 сеть была заново сконфигурирована. Команда ping была протестирована заново - в этот раз все 100% пакетов были доставлены (Рисунок 9).
+![image](https://user-images.githubusercontent.com/42407837/209435174-96c6ecee-7d4e-4639-b45a-9965b231af93.png)
 
-![image](https://user-images.githubusercontent.com/42407837/204137368-20cef349-b412-493c-9636-2e42ff0a9861.png)
+Рисунок 8 - Проверка подключения
 
-Рисунок 9 - Тестирование команды ping
+2. Задание Basic Tunneling
 
-Наконец, работа сети была проверена через программы receive.py и send.py. Также была проверена работоспособность туннелирования с помощью параметра dst_id (Рисунки 10-15).
+Вначале был определен новый заголовок myTunnel_t (Рисунки 9 и 10).
 
-![image](https://user-images.githubusercontent.com/42407837/204137548-6c7f1cc4-3cff-450f-98a9-712bddf8089a.png)
+![image](https://user-images.githubusercontent.com/42407837/209435302-897db7ed-9f8e-46a5-9e78-841f6d28cc98.png)
 
-Рисунок 10 - Тестирование receive.py (1)
+Рисунок 9 - Создание заголовка myTunnel_t
 
-![image](https://user-images.githubusercontent.com/42407837/204137587-4bd1c215-a4e6-4106-b537-75509f5b2624.png)
+![image](https://user-images.githubusercontent.com/42407837/209435323-4830bd76-e551-4d84-90ee-3337f01ba4ee.png)
 
-Рисунок 11 - Тестирование send.py (1)
+Рисунок 10 - Добавление заголовка myTunnel_t
 
-![image](https://user-images.githubusercontent.com/42407837/204137633-bdd321aa-1d34-460b-9715-623df003e5e6.png)
+Был добавлен парсер parse_myTunnel (Рисунок 11), который извлекает заголовок myTunnel. Если значение поля proto_id равно 0x800, то следует перейти на парсер parse_ipv4.
 
-Рисунок 12 - Тестирование receive.py (2)
+![image](https://user-images.githubusercontent.com/42407837/209435362-bc4dbc9e-fb1e-4600-add9-63e6e294efe3.png)
 
-![image](https://user-images.githubusercontent.com/42407837/204137645-c2926f5c-ed97-4f37-b7b0-0da0dd6ef95c.png)
+Рисунок 11 - Парсер parse_myTunnel
 
-Рисунок 13 - Тестирование send.py (2)
+Далее парсер parse_ethernet был изменен (Рисунок 12), чтобы извлечь либо ipv4 заголовок, либо myTunnel заголовок в зависимости от значения поля etherType. Значение etherType, которое соответствует заголовку myTunnel, равно 0x1212. Это значение определено в самом начале файла.
 
-![image](https://user-images.githubusercontent.com/42407837/204137663-822ac5b8-9667-4358-8393-40b55006bdb2.png)
+![image](https://user-images.githubusercontent.com/42407837/209435377-70f9cd32-904a-4cf6-be48-d7424ae57d02.png)
 
-Рисунок 14 - Тестирование receive.py (3)
+Рисунок 12 - Изменение парсера parse_ethernet
 
-![image](https://user-images.githubusercontent.com/42407837/204137677-8ebedd2a-5675-481d-ba65-af07f3f71efc.png)
+Была определена таблица myTunnel_exact, отвечающая за маршрутизацию myTunnel пакет (Рисунок 13). Таблица вызывает функцию myTunnel_forward, которая устанавливает выходной порт для исходящих пакетов.
 
-Рисунок 15 - Тестирование send.py (3)
+![image](https://user-images.githubusercontent.com/42407837/209435402-5cffe45f-d9c9-42f7-9ad7-0609b2f99c14.png)
 
-Ниже представлены схемы сетей, использованных в задании
+Рисунок 13 - Таблица myTunnel_exact
+
+![image](https://user-images.githubusercontent.com/42407837/209435457-d8ca7073-d8d6-4b9c-951c-2d283dfda99e.png)
+
+Рисунок 14 - Функция myTunnel_forward
+
+Была обновлена функция apply, которая использует соответствующую таблицу в зависимости от типа пакетов (Рисунок 15).
+
+![image](https://user-images.githubusercontent.com/42407837/209435540-1a237859-26fa-467f-a60f-ee188694978f.png)
+
+Рисунок 15 - Функция apply
+
+Также был написан депарсер (Рисунок 16).
+
+![image](https://user-images.githubusercontent.com/42407837/209435678-730fd7e4-1250-42d7-807e-09f10224080d.png)
+
+Рисунок 16 - Депарсер
+
+Для проверки были запущены хосты h1 и h2.
+
+![image](https://user-images.githubusercontent.com/42407837/209435771-e2154342-71f0-4f3c-aa75-79977e764eaf.png)
+
+Рисунок 17 - Запуск первого хоста
+
+![image](https://user-images.githubusercontent.com/42407837/209435782-cff4591c-28ed-4d36-9378-7271bd3fa603.png)
+
+Рисунок 18 - Запуск второго хоста
+
+Далее были запущены скрипты receive.py на хосте h2 и send.py на хосте h1. При передаче пакетов типа myTunnel можно было указать любой ip адрес.
+
+![image](https://user-images.githubusercontent.com/42407837/209435797-6e15da31-6215-4fc8-85db-ff4f3425d483.png)
+
+Рисунок 19 - Запуск send.py
+
+![image](https://user-images.githubusercontent.com/42407837/209435846-a021684c-adc8-451c-a4cd-cd892fc56e2d.png)
+
+Рисунок 20 - Запуск receive.py
+
+Ниже представлены схемы сетей, использованных в задании:
 
 ![image](https://user-images.githubusercontent.com/42407837/204137721-60ed7002-5e34-4a07-94f0-0af2202bad69.png)
 
-Рисунок 16 - Схема Basic Forwarding
+Рисунок 21 - Схема Basic Forwarding
 
 ![image](https://user-images.githubusercontent.com/42407837/204137754-75d0cc4f-3bbe-43b4-8015-32e63848a660.png)
 
-Рисунок 17 - Схема Basic Tunneling
+Рисунок 22 - Схема Basic Tunneling
 
 Вывод:
 В ходе выполнения лабороторной работы было изучено стандартное перенаправление пакетов, а также туннелирование. Также данные механизмы были реализованы с помозью языка P4.

@@ -23,10 +23,6 @@ sudo systemctl enable postgresql
 
 Далее был установлен Reddis, а также была создана база данных для Netbox. Затем была склонирована ветка репозитория NetBox из GitHub. Но перед этим была установлена команда git, поскольку ее не оказалось на виртуальной машине.
 
-Далее была создана системная учетная запись пользователя с именем Netbox с помощью следующих команд:
-sudo adduser --system --group netbox
-sudo chown --recursive netbox /opt/netbox/netbox/media/
-
 Затем была создана виртуальная среда Python, а также был создан суперпользователь для авторировации в Netbox. Наконец, сервер Netbox был поднят на порту 8000 (Рисунок 1).
 
 ![image](https://user-images.githubusercontent.com/42407837/209433674-792a8f2a-953f-44e9-b153-c17c0abb4030.png)

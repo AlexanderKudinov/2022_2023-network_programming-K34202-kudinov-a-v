@@ -1,0 +1,22 @@
+- name: Serial Number
+  hosts: Routers
+  tasks:
+
+  - name: Collecting data
+    community.routeros.command:
+      commands:
+        - /system/license/print
+  - name: Save
+    set_fact:
+      index: "{{ groups['Routers'].index(inventory_hostname) | int }}"
+      routers: "{{ query('netbox.netbox.nb_lookup', 'devices',
+                   api_endpoint='http://172.31.69.30:8000',
+                        token='f28102b33a5c71e7cb9b7c4189b066ce4c85a803') }}"
+
+  - name: Add serialnum to Netbox
+    netbox_device:
+      netbox_url: http://172.31.69.30:8000
+      netbox_token: f28102b33a5c71e7cb9b7c4189b066ce4c85a803
+      data:
+        name: "{{ routers[index | int].value.name }}"
+        serial: "{{ output.stdout_lines[0][0] | regex_replace('system-id:', '')}}"

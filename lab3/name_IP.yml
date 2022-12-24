@@ -1,0 +1,22 @@
+- name: Change Router Name and add IP-address
+  hosts: Routers
+  tasks:
+
+    - name: Getting router ID
+      set_fact:
+        routers: "{{ query('netbox.netbox.nb_lookup', 'ip-addresses',
+                     api_endpoint='http://172.31.69.30:8000',
+                        api_filter='role=loopback',
+                        token='f28102b33a5c71e7cb9b7c4189b066ce4c85a803') }}"
+        index: "{{ groups['Routers'].index(inventory_hostname) | int }}"
+
+    - name: SET IP AND NAME
+      set_fact:
+        router_name: "{{ routers[index | int].value.assigned_object.device.name }}"
+        router_ip: "{{ routers[index | int].value.address }}"
+
+    - name: CHANGE ROUTERS' NAME AND ADD IP
+      routeros_command:
+        commands:
+          - /ip/address/add address={{ router_ip }} interface=lo
+          - /system/identity/set name={{ router_name }}

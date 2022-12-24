@@ -1,0 +1,14 @@
+[Routers]
+172.31.69.10
+172.31.69.20
+
+[netbox]
+172.31.69.30
+
+[Routers:vars]
+ansible_connection=network_cli
+ansible_network_os=routeros
+ansible_user=admin
+
+[netbox:vars]
+ansible_user=kudinov

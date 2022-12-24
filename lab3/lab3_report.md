@@ -41,10 +41,7 @@ sudo systemctl enable postgresql
 
 Рисунок 4 - Установка Netbox
 
-Затем была склонирована ветка репозитория NetBox из GitHub. Но перед этим была установлена команда git, поскольку ее не оказалось на виртуальной машине (Рисунок 5).
-
-
-Рисунок 5 - Клонирование репозитория Netbox
+Затем была склонирована ветка репозитория NetBox из GitHub. Но перед этим была установлена команда git, поскольку ее не оказалось на виртуальной машине.
 
 Далее была создана системная учетная запись пользователя с именем Netbox с помощью следующих команд:
 sudo adduser --system --group netbox
@@ -54,7 +51,7 @@ sudo chown --recursive netbox /opt/netbox/netbox/media/
 
 Был установлен и запущен nginx, после чего Netbox был открыт через браузер (Рисунок 6).
 
-![image](https://user-images.githubusercontent.com/42407837/204134402-9354f59c-9901-46f0-b4bb-7bf778b62474.png)
+![image](https://user-images.githubusercontent.com/42407837/209428090-e3bf0080-d4f8-4e3f-95f0-8da3a8e7f543.png)
 
 Рисунок 6 - Подключение к Netbox
 
